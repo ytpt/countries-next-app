@@ -1,4 +1,4 @@
-import CountryCard from '@/app/components/country-card/CountryCard';
+import CountryCard from '@/app/components/country-card/CountryCard'
 
 export type Country = {
     name: {

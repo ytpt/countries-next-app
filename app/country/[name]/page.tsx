@@ -1,13 +1,13 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Country } from '@/app/page';
-import CountryCard from "@/app/components/country-card/CountryCard";
+import Link from 'next/link'
+import Image from 'next/image'
+import { Country } from '@/app/page'
+import CountryCard from '@/app/components/country-card/CountryCard'
 
 async function getCountryByName(name: string): Promise<Country> {
     const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`);
     const country = await response.json();
 
-    return country[0];
+    return country[0] as Country;
 }
 
 async function getCountryBordersByName(name: string): Promise<{
@@ -46,7 +46,7 @@ async function CountryDetail({params: {name}}: { params: { name: string } }) {
                 <Image src="/arrow.svg" alt="Home" width={24} height={24}/>
                 <h1>Назад</h1>
             </Link>
-            <article className="flex justify-between min-w-full p-10 bg-white rounded-xl">
+            <article className="flex md:flex-row flex-col justify-between min-w-full p-10 bg-white rounded-xl">
                 <section>
                     {country.capital && (
                         <h2 className="text-xl text-gray-800 mt-3">
@@ -72,7 +72,7 @@ async function CountryDetail({params: {name}}: { params: { name: string } }) {
                         </h2>
                     )}
                 </section>
-                <div className="relative h-auto w-96 shadow-md">
+                <div className="relative h-48 my-2 md:h-auto w-96 shadow-md md:order-last order-first">
                     <Image src={country.flags.svg} alt={country.flags.alt} fill/>
                 </div>
             </article>
