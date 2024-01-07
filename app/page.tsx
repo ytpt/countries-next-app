@@ -49,7 +49,6 @@ export default async function Home() {
             </section>
         )
     } catch (error) {
-        console.error("Error fetching data:", error);
-        return <div>Error fetching data</div>;
+        return <div>{error}</div>;
     }
 }
