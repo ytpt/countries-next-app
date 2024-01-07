@@ -49,6 +49,6 @@ export default async function Home() {
             </section>
         )
     } catch (error) {
-        return <div>{error}</div>;
+        return <div>{error?.toString()}</div>;
     }
 }
